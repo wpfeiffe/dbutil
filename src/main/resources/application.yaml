@@ -4,7 +4,3 @@ spring:
     driverClassName: ${JDBC_DRIVER}
     username: ${JDBC_USER}
     password: ${JDBC_PASSWORD}
-#    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_DB:retrospect}
-#    driverClassName: org.postgresql.Driver
-#    username: ${POSTGRES_USER:retrospect}
-#    password: ${POSTGRES_PASSWORD:retrospect}
