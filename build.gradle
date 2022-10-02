@@ -1,0 +1,48 @@
+plugins {
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+group = 'com.wspfeiffer'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+springBoot {
+    buildInfo {
+        properties {
+            additional = [
+                    'buildJdk' : System.getProperty('java.version'),
+                    'buildTime' : new Date().format('yyyyMMdd_HHmmss'),
+                    'appVersion' : project.version
+            ]
+        }
+    }
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter"
+    implementation "org.springframework.boot:spring-boot-starter-jdbc"
+    implementation "commons-cli:commons-cli:1.5.0"
+    implementation "com.oracle.database.jdbc:ojdbc11:${oracleVersion}"
+    implementation "mysql:mysql-connector-java:${mysqlVersion}"
+    implementation "org.postgresql:postgresql:${postgresqlVersion}"
+    implementation "com.microsoft.sqlserver:mssql-jdbc:${mssqlVersion}"
+    implementation "org.mariadb.jdbc:mariadb-java-client:${mariadbVersion}"
+    implementation "com.h2database:h2:${h2Version}"
+    
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.1"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.8.1"
+}
+
+test {
+    useJUnitPlatform()
+}
